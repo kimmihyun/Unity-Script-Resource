@@ -1,6 +1,8 @@
-Phoron
+Photon (2017-03-14)
 Connect - Lobby - Room
 
+
+//---------------------------------
 
 -포톤클라우드에 접속 : 버젼이 다른 사용자끼리 만날 수 없다.
     PhotonNetwork.ConnectUsingSettings(String version);
@@ -24,5 +26,17 @@ Connect - Lobby - Room
     
 -룸접속 성공
     OnJoinedRoom(){}
+
+//-------------------------------------
+
+-데이터송수신
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){}
+
+-데이터전송
+    PhotonStream.SendNext(object obj)
+
+-데이터수신
+    object PhotonStream.ReceiveNext()
+
 
 
