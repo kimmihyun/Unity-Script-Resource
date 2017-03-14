@@ -1,0 +1,6 @@
+구분자 기준으로 문자열 자르기 (Split)
+구분자를 기준으로 문자열을 분리시켜서 배열로 반환합니다.
+string str = "가,나,다,라,마";
+string [] result = str.Split(',');
+
+http://egloos.zum.com/skymong9/v/1402414

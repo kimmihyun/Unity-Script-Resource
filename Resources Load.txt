@@ -1,0 +1,3 @@
+GameObject enemy = (GameObjcet)Resources.Lod("Enemy/enemyPrefab");
+
+Resource -> Enemy -> enemyPrefb

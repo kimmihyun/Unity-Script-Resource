@@ -1,0 +1,28 @@
+Phoron
+Connect - Lobby - Room
+
+
+-포톤클라우드에 접속 : 버젼이 다른 사용자끼리 만날 수 없다.
+    PhotonNetwork.ConnectUsingSettings(String version);
+  ex)
+    public string version = "v1.0";
+    PhotonNetwork.ConnectUsingSettings(version);
+
+-로비 접속시
+    void OnJoinedLobby(){}
+
+-랜덤의 룸 접속
+    PhotonNetwork.JoinRandomRoom();
+
+-랜덤의 룸에 들어가기 실패
+    void OnPhotonRandomJoinFailed(){}
+
+-새로운 룸 생성
+    PhotonNetwork.CreateRoom(String RoomName);
+  ex)
+    PhotonNetwork.CreateRoom("MyRoom");
+    
+-룸접속 성공
+    OnJoinedRoom(){}
+
+

@@ -1,0 +1,9 @@
+Raycast Ui클릭할때 오브젝트 클릭못함
+
+if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1))
+{
+return;
+}
+
+
+출처: http://youngchangoon.tistory.com/5 [Game & Programming]
