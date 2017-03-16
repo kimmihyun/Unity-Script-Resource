@@ -23,11 +23,44 @@ Connect - Lobby - Room
     PhotonNetwork.CreateRoom(String RoomName);
   ex)
     PhotonNetwork.CreateRoom("MyRoom");
+
+-룸 접속
+  PhotonNetwork.JoinRoom(string RoomName);
     
 -룸접속 성공
     OnJoinedRoom(){}
 
-//-------------------------------------
+-룸생성 실패
+    void OnPhotonCreateRoomFailed(object[] codeAndMsg) {
+            Debug.Log("Create Room Failed = " + codeAndMsg[1]);
+         }
+
+-네트워크 플레이어가 접속했을 때 호출되는 함수
+    void OnPhotonPlayerConnected(PhotonPlayer newPlayer) {}
+
+-네트워크 플레이어가 룸을 나가거나 접속이 끊겼을 때 호출되는 함수
+    void OnPhotonPlayerDisconnected(PhotonPlayer outPlayer) {}
+
+-룸에서 접속 종료됐을 때 호출되는 콜백 함수
+    void OnLeftRoom() {}
+
+
+------------------------------------
+
+-생성된 룸 목록을 전달
+     void OnReceivedRoomListUpdate() {
+             foreach (RoomInfo _room in PhotonNetwork.GetRoomList()) {
+                 Debug.Log(_room.name);
+            }
+         }
+
+  Hashtable customProperies[get] : 룸에 설정된 사용자 정의 속성
+  string name [get] : 룸 이름
+  int playerCount [get,set] : 현재 룸에 접속한 사용자 수
+  byte maxPlayers [get] : 최대 접속 가능한 사용자 수
+  bool opne [get] : 룸에 접속 허용 여부
+  bool visible [get] : 로비에서 룸의 노출 여부
+-------------------------------------
 
 -데이터송수신
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){}
@@ -37,6 +70,41 @@ Connect - Lobby - Room
 
 -데이터수신
     object PhotonStream.ReceiveNext()
+
+-------------------------------------
+
+-[PunRPC] : 원격네트워크 플레이어가 RPC를 이용해 함수 호출
+
+-PhotonView.RPC(String 호출할함수명, PhotonTargets 호출대상, params object[] 전달할 데이터);
+  ex)
+    pv.RPC("Fire",PhotonTargets.Others, null);
+
+-PhtonTargets 옵션
+  All : 모든 네트워크 유저에게 RPC를 전송하고 자신은 즉시 RPC를 실행한다.
+  Others : 자신을 제외하고 모든 네트워크 유저에게 RPC를 전송한다.
+  MasterClient : Master Client에게 RPC를 전송한다.
+  AllBuffered : 모든 네트워크 유저에게 RPC를 전송하고 자신은 즉시 RPC를 실행한다. 또한 나중에 입장한 유저에게 저장돼 있던 RPC가 전달된다.
+  OtherBuffered : 자신을 제외하고 모든 네트워크 유저에게 RPC를 전송한다. 또한 나중에 입장한 유저에게 버퍼에 저장돼 있던 RPC가 전달된다.
+  AllViaServer : 모든 네트워크 유저에게 거의 동일한 시간에 RPC를 전송하기 위해 서버에서 모든 클라이언트에게 RPC를 동시에 전송한다.
+  AllBufferedViaServer : AllViaServer와 동일하며, 버퍼에 저장돼 있는 RPC를 나중에 입장한 유저에게 전송한다.
+
+--------------------------------------
+-PhotonNetwork.isMessageQueueRunning = false; : 클라우드 서버로부터 네트워크 메시지 수신 중단
+
+-PhotonNetwork.Instantiate(String prefabName, Vector3.positon, Quaternion rotation, int group); : 모든 Player한테 리소스폴더안에있는 프리팹생성
+    ex)PhotonNetwork.Instantiate("Tank", new Vector3(5f, 20.0f, 5f), Quaternion.identity, 0);
+
+-Room currRoom = PhotonNetwork.room; : 룸의 정보를 담음
+    ex)textConnect.text = currRoom.playerCount.ToString() + "/" + currRoom.maxPlayers.ToString();
+
+-PhotonNetwork.LeaveRoom(); : 현재 룸을 빠져나가며 생성한 모든 네트워크 객체를 삭제
+
+
+
+        pv.ObservedComponents[0] = this;
+        pv.synchronization = ViewSynchronization.UnreliableOnChange;
+
+	stream.isWriting
 
 
 
