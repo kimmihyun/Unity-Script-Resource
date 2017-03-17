@@ -1,0 +1,5 @@
+String s;
+
+if(String.IsNullOrEmpty(s)){
+Debug.Log("Null");
+}
