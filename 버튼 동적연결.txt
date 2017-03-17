@@ -1,0 +1,11 @@
+GameObject obj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(delegate {Class});
+
+ex)
+roomData.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(delegate { OnClickRoomItem(roomData.roomName); });
+
+ void OnClickRoomItem(string roomName) {
+        PhotonNetwork.player.name = userId.text;
+        PlayerPrefs.SetString("USER_ID", userId.text);
+
+        PhotonNetwork.JoinRoom(roomName);
+    }
