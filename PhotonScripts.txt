@@ -89,6 +89,7 @@ Connect - Lobby - Room
   AllBufferedViaServer : AllViaServer와 동일하며, 버퍼에 저장돼 있는 RPC를 나중에 입장한 유저에게 전송한다.
 
 --------------------------------------
+
 -PhotonNetwork.isMessageQueueRunning = false; : 클라우드 서버로부터 네트워크 메시지 수신 중단
 
 -PhotonNetwork.Instantiate(String prefabName, Vector3.positon, Quaternion rotation, int group); : 모든 Player한테 리소스폴더안에있는 프리팹생성
@@ -99,12 +100,29 @@ Connect - Lobby - Room
 
 -PhotonNetwork.LeaveRoom(); : 현재 룸을 빠져나가며 생성한 모든 네트워크 객체를 삭제
 
+-PhotonNetwork.player : 로컬플레이어(자신)
 
+-PhotonNetwork.playerList : 현재 입상한 룸의 모든 네트워크 플레이어 정보
+
+-pv.ObservedComponents[0] = this; : Observed속성을 이 스크립트로 설정
+
+-pv.synchronization = ViewSynchronization.UnreliableOnChange; : 동기화 속성 설정
+
+--------------------------------------
+
+-스코어 관리
+  PhotonPlayer.AddScore(int);
+  PhotonPlayer.SerScore(int);
+  PhotonPlayer.GetScore();
+
+--------------------------------------
+
+-네트워크 팀
+  PhotonNetwork.player.SetTeam(PunTeams.Team);
+  PhotonNetwork.player.GetTeam();
+  PunTeams.Team.blue,PunTeams.Team.none,PunTeams.Team.red
 
 ///????????????????????????????????????
-
-        pv.ObservedComponents[0] = this;
-        pv.synchronization = ViewSynchronization.UnreliableOnChange;
 
 	stream.isWriting
 
