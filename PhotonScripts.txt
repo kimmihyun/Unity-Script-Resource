@@ -1,4 +1,5 @@
 Photon (2017-03-16)
+
 Connect - Lobby - Room
 
 
@@ -104,9 +105,11 @@ Connect - Lobby - Room
 
 -PhotonNetwork.playerList : 현재 입상한 룸의 모든 네트워크 플레이어 정보
 
--pv.ObservedComponents[0] = this; : Observed속성을 이 스크립트로 설정
+-PhotonView.ObservedComponents[0] = this; : Observed속성을 이 스크립트로 설정
 
--pv.synchronization = ViewSynchronization.UnreliableOnChange; : 동기화 속성 설정
+-PhotonView.synchronization = ViewSynchronization.UnreliableOnChange; : 동기화 속성 설정
+
+-PhotonNetwork.connectionStateDetailed.ToString(); : 접속과정에대한 로그출력에 필요
 
 --------------------------------------
 

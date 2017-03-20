@@ -1,0 +1,9 @@
+ AsyncOperation ao = Application.LoadLevelAsync(String seneName); 
+
+ex)
+IEnumerator LoadBattleField() {
+        PhotonNetwork.isMessageQueueRunning = false;
+
+        AsyncOperation ao = Application.LoadLevelAsync("scBattleField");
+        yield return ao;
+    }
