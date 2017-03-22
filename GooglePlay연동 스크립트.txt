@@ -1,0 +1,53 @@
+-연동
+
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.SocialPlatforms;
+
+PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+PlayGamesPlatform.InitializeInstance(config);
+PlayGamesPlatform.DebugLogEnabled = true;
+PlayGamesPlatform.Activate();
+
+-로그인
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
+
+void Login(){
+Social.localUser.Authenticate((bool success) => {});
+}
+
+-업적
+
+:Revealing/Unlocking an Achievement
+    using GooglePlayGames;
+    using UnityEngine.SocialPlatforms;
+
+    Social.ReportProgress(String ID, 100.0f, (bool success) => { });
+
+:Incrementing an Achievement
+    using GooglePlayGames;
+    using UnityEngine.SocialPlatforms;
+
+    PlayGamesPlatform.Instance.IncrementAchievement(String ID, 5, (bool success) => {  });
+
+:Showing the Achievements UI
+    using GooglePlayGames;
+    using UnityEngine.SocialPlatforms;
+
+    Social.ShowAchievementsUI();
+
+
+-리더보드
+
+:Posting a Score to a Leaderboard
+    using GooglePlayGames;
+    using UnityEngine.SocialPlatforms;
+
+    Social.ReportScore(Int Score, String ID, (bool success) => { });
+
+:Showing the Leaderboard UI
+    using GooglePlayGames;
+    using UnityEngine.SocialPlatforms;
+
+    Social.ShowLeaderboardUI();
